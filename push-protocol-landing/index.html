@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Push Protocol | Trustless Talent Discovery for Web3</title>
+ <meta name="description" content="Push Protocol: decentralized Web3 job marketplace. Escrow, portable reputation, 12.5% fee." />
+ <meta name="theme-color" content="#eef4fc" id="meta-theme-color" />
+ <link rel="icon" id="favicon-link" href="assets/favicon.svg.png" type="image/png" />
+ <script>
+ (function () {
+ try {
+ var t = localStorage.getItem("push_theme");
+ if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+ document.documentElement.setAttribute("data-theme", t);
+ } catch (e) {
+ document.documentElement.setAttribute("data-theme", "light");
+ }
+ })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+ <script src="https://cdn.tailwindcss.com"></script>
+ <script>
+ tailwind.config = {
+ theme: {
+ extend: {
+ fontFamily: {
+ display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+ sans: ['Inter', 'system-ui', 'sans-serif'],
+ },
+ },
+ },
+ };
+ </script>
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="animations.css" />
+</head>
+<body class="font-sans antialiased">
+ <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+
+ <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 scrolled">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <nav class="flex h-16 sm:h-[4.25rem] items-center justify-between gap-4">
+ <a href="index.html" class="flex items-center gap-2.5 group shrink-0" aria-label="Push Protocol home">
+ <img src="assets/logo.svg.png" alt="" width="28" height="28" class="logo-img" data-media="logo" />
+ <span class="font-display font-semibold text-[1.05rem] tracking-tight nav-brand">
+ Push<span class="font-medium"> Protocol</span>
+ </span>
+ </a>
+
+ <div class="hidden lg:flex items-center gap-1 text-[0.9rem]">
+ <a href="index.html" class="nav-link nav-link-active">Home</a>
+ <a href="about.html" class="nav-link">About</a>
+ <a href="solution.html" class="nav-link">Solution</a>
+ <a href="roles.html" class="nav-link">Roles</a>
+ <a href="investors.html" class="nav-link">Investors</a>
+ <a href="roadmap.html" class="nav-link">Roadmap</a>
+ <a href="waitlist.html" class="nav-link">Waitlist</a>
+ </div>
+
+ <div class="flex items-center gap-2 sm:gap-3">
+ <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle light / dark">
+ <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ </button>
+ <button type="button" id="nav-wallet-btn" class="btn-primary text-sm px-3.5 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 transition-all">
+ <span id="nav-wallet-avatar" class="w-4 h-4 rounded-full hidden" style="background: linear-gradient(135deg, #14F195, #9945FF);"></span>
+ <span id="nav-wallet-text">Connect Wallet</span>
+ </button>
+ <button type="button" id="menu-toggle" class="icon-btn lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+ <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ </nav>
+ </div>
+
+ <div id="mobile-menu" class="lg:hidden hidden">
+ <div class="mx-auto max-w-6xl px-4 py-4 flex flex-col gap-1 text-[0.95rem]">
+ <a href="index.html" class="mobile-link">Home</a>
+ <a href="about.html" class="mobile-link">About</a>
+ <a href="problem.html" class="mobile-link">Problem</a>
+ <a href="solution.html" class="mobile-link">Solution</a>
+ <a href="roles.html" class="mobile-link">Roles</a>
+ <a href="how-it-works.html" class="mobile-link">How It Works</a>
+ <a href="preview.html" class="mobile-link">Preview</a>
+ <a href="compare.html" class="mobile-link">Why Push</a>
+ <a href="investors.html" class="mobile-link">Investors</a>
+ <a href="roadmap.html" class="mobile-link">Roadmap</a>
+ <a href="founder.html" class="mobile-link">Founder</a>
+ <a href="faq.html" class="mobile-link">FAQ</a>
+ <a href="waitlist.html" class="mobile-link">Waitlist</a>
+ <a href="waitlist.html" class="btn-primary text-center mt-2 py-3">Join Waitlist</a>
+ </div>
+ </div>
+ </header>
+
+<main id="main" class="page-main home-page pb-0">
+ <!-- Hero -->
+ <section id="top" class="home-hero relative pt-28 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
+ <div class="hero-grid" aria-hidden="true"></div>
+ <div class="hero-glow" aria-hidden="true"></div>
+ <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+ <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+
+ <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
+ <div class="max-w-3xl mx-auto text-center">
+ <div class="status-banner reveal inline-flex items-center gap-2.5 mb-8 px-3.5 py-2.5 rounded-xl">
+ <span class="status-dot animate-pulse-soft" aria-hidden="true"></span>
+ <p class="text-[0.8rem] sm:text-sm leading-snug">
+ <span class="status-label">In active development</span>
+ <span class="opacity-50 mx-1.5">·</span>
+ MVP targeted for late 2026
+ </p>
+ </div>
+
+ <h1 id="hero-headline" class="reveal reveal-delay-1 font-display font-bold text-[2.25rem] leading-[1.1] sm:text-5xl md:text-[3.5rem] tracking-tight hero-title">
+ Hire and get hired<br class="hidden sm:block" />
+ <span class="hero-highlight">without the middlemen</span>
+ </h1>
+
+ <p class="reveal reveal-delay-2 mt-5 sm:mt-6 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed hero-sub">
+ Trustless talent discovery for Web3. Post jobs, get paid, and build reputation that follows you. Community, growth, design, ops, and engineering.
+ </p>
+
+ <div class="reveal reveal-delay-3 mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 flex-wrap">
+ <a href="#waitlist" class="btn-primary anim-btn-glow px-7 py-3.5 text-base" data-role="employer">I'm Hiring</a>
+ <a href="#waitlist" class="btn-secondary px-7 py-3.5 text-base" data-role="talent">I'm Looking for Work</a>
+ <a href="investors.html" class="btn-secondary px-7 py-3.5 text-base">For Investors</a>
+ </div>
+
+ <p class="reveal reveal-delay-4 mt-6 text-xs sm:text-sm hero-note">
+ No live product yet. No fabricated metrics. Honest roadmap.
+ </p>
+ </div>
+
+ <div class="reveal reveal-delay-5 mt-12 sm:mt-16 max-w-4xl mx-auto">
+ <div class="lifecycle-diagram relative rounded-2xl p-5 sm:p-8">
+ <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[0.7rem] sm:text-xs font-medium tracking-wide uppercase">
+ <span class="lifecycle-node">Post</span>
+ <span class="lifecycle-arrow" aria-hidden="true"></span>
+ <span class="lifecycle-node">Apply</span>
+ <span class="lifecycle-arrow" aria-hidden="true"></span>
+ <span class="lifecycle-node accent-node" data-anim="lifecyclePulse">Escrow</span>
+ <span class="lifecycle-arrow" aria-hidden="true"></span>
+ <span class="lifecycle-node">Deliver</span>
+ <span class="lifecycle-arrow" aria-hidden="true"></span>
+ <span class="lifecycle-node accent-node" data-anim="lifecyclePulse">Pay + Badge</span>
+ </div>
+ <p class="mt-4 text-center text-xs sm:text-sm lifecycle-caption">Payment locked until work is approved. Any Web3 role, not only coders.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- Value props -->
+ <section class="home-values">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+ <div class="grid sm:grid-cols-3 gap-4 sm:gap-5">
+ <article class="value-card reveal">
+ <div class="value-icon">01</div>
+ <h3 class="font-display font-semibold text-lg">One marketplace</h3>
+ <p class="text-sm mt-2 leading-relaxed muted-body">Stop hunting Discord and Telegram. Jobs filterable by skill, pay, and deadline.</p>
+ </article>
+ <article class="value-card reveal reveal-delay-1">
+ <div class="value-icon">02</div>
+ <h3 class="font-display font-semibold text-lg">Escrow that pays</h3>
+ <p class="text-sm mt-2 leading-relaxed muted-body">Funds lock on Solana until approval. Workers keep 87.5%. Platform takes 12.5%.</p>
+ </article>
+ <article class="value-card reveal reveal-delay-2">
+ <div class="value-icon">03</div>
+ <h3 class="font-display font-semibold text-lg">Reputation you own</h3>
+ <p class="text-sm mt-2 leading-relaxed muted-body">Completion badges and reviews that travel with you. Not locked to one silo.</p>
+ </article>
+ </div>
+ </div>
+ </section>
+
+ <!-- Explore (compact, more visual) -->
+ <section class="section-pad home-explore">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <div class="section-head reveal max-w-2xl">
+ <p class="section-label">Explore</p>
+ <h2 class="section-title">Learn more about Push</h2>
+ <p class="section-sub">Each topic has its own page so you can go straight to what matters.</p>
+ </div>
+ <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+ <a href="about.html" class="card home-card reveal">
+ <span class="home-card-kicker">01</span>
+ <h3 class="card-title">About</h3>
+ <p class="card-body">Who we are and what we are building</p>
+ <span class="home-card-link">Open →</span>
+ </a>
+ <a href="solution.html" class="card home-card reveal reveal-delay-1">
+ <span class="home-card-kicker">02</span>
+ <h3 class="card-title">Solution</h3>
+ <p class="card-body">Escrow, badges, and a 12.5% flat fee</p>
+ <span class="home-card-link">Open →</span>
+ </a>
+ <a href="roles.html" class="card home-card reveal reveal-delay-2">
+ <span class="home-card-kicker">03</span>
+ <h3 class="card-title">Roles</h3>
+ <p class="card-body">Community, growth, design, eng, ops</p>
+ <span class="home-card-link">Open →</span>
+ </a>
+ <a href="how-it-works.html" class="card home-card reveal">
+ <span class="home-card-kicker">04</span>
+ <h3 class="card-title">How It Works</h3>
+ <p class="card-body">From post to pay and completion badge</p>
+ <span class="home-card-link">Open →</span>
+ </a>
+ <a href="investors.html" class="card home-card reveal reveal-delay-1">
+ <span class="home-card-kicker">05</span>
+ <h3 class="card-title">Investors</h3>
+ <p class="card-body">Thesis, honest status, early interest</p>
+ <span class="home-card-link">Open →</span>
+ </a>
+ <a href="roadmap.html" class="card home-card reveal reveal-delay-2">
+ <span class="home-card-kicker">06</span>
+ <h3 class="card-title">Roadmap</h3>
+ <p class="card-body">MVP, trust layer, then scale</p>
+ <span class="home-card-link">Open →</span>
+ </a>
+ </div>
+ <p class="reveal mt-6 text-sm muted text-center">
+ More: <a href="problem.html" class="inline-link">Problem</a> ·
+ <a href="preview.html" class="inline-link">Preview</a> ·
+ <a href="compare.html" class="inline-link">Why Push</a> ·
+ <a href="founder.html" class="inline-link">Founder</a> ·
+ <a href="faq.html" class="inline-link">FAQ</a>
+ </p>
+ </div>
+ </section>
+
+ <!-- Join Waitlist at bottom of home -->
+ <section id="waitlist" class="section-pad home-waitlist">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <div class="home-waitlist-wrap reveal">
+ <div class="section-head max-w-xl mx-auto text-center mb-8">
+ <p class="section-label">Join waitlist</p>
+ <h2 class="section-title">Get early access</h2>
+ <p class="section-sub mx-auto">For employers and workers. Investors: use the <a href="investors.html" class="inline-link">Investors page</a>. No spam.</p>
+ </div>
+
+ <div class="max-w-xl mx-auto">
+ <div class="waitlist-card">
+ <div class="segmented" role="tablist" aria-label="Waitlist type">
+ <button type="button" class="segment active" role="tab" aria-selected="true" data-segment="employer">
+ <span class="segment-title">Employer</span>
+ <span class="segment-desc">I post jobs / hire</span>
+ </button>
+ <button type="button" class="segment" role="tab" aria-selected="false" data-segment="worker">
+ <span class="segment-title">Worker</span>
+ <span class="segment-desc">I want work (talent)</span>
+ </button>
+ </div>
+ <p id="segment-hint" class="segment-hint">You are signing up as someone who hires or posts jobs on Push.</p>
+
+ <form id="waitlist-form" class="mt-6 space-y-4" novalidate>
+ <input type="hidden" name="segment" id="segment-field" value="employer" />
+ <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+ <div class="mb-5 p-4 border border-border rounded-xl bg-bg-soft flex flex-col items-center justify-center gap-3 transition-all" id="wallet-box">
+ <button type="button" id="form-wallet-btn" class="btn-secondary w-full py-3 flex items-center justify-center gap-2 font-display text-sm">
+ <svg width="18" height="18" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M102.5 35.8c-7.9-18.4-25.2-29.4-44.5-29.4C30.2 6.4 7.6 29.1 7.6 57v52.3c0 6.6 5.4 12 12 12h2.2c4.1 0 7.8-2 10.1-5.3l5.5-7.8c1.6-2.2 4.1-3.6 6.8-3.6h1.2c2.7 0 5.2 1.3 6.8 3.6l5.5 7.8c2.2 3.2 5.9 5.3 10.1 5.3h2.2c4.1 0 7.8-2 10.1-5.3l5.5-7.8c1.6-2.2 4.1-3.6 6.8-3.6h1.2c2.7 0 5.2 1.3 6.8 3.6l5.5 7.8c2.2 3.2 5.9 5.3 10.1 5.3h2.2c6.6 0 12-5.4 12-12V69.7c0-2-.3-4.1-.9-6.1l-10-33.8z" fill="#AB9FF2"/><circle cx="44.2" cy="46.7" r="8.2" fill="#fff"/><circle cx="72.2" cy="46.7" r="8.2" fill="#fff"/></svg>
+ Connect Phantom Wallet
+ </button>
+ <input type="hidden" name="wallet_address" id="wallet-address" value="" />
+ <p id="wallet-error" class="text-xs text-danger hidden">Wallet connection cancelled or failed.</p>
+ <p class="text-xs form-hint text-center">Wallet is optional. Community, design, and writing workers can join without Phantom.</p>
+ </div>
+
+ <div>
+ <label for="email" class="field-label">Email <span class="req">*</span></label>
+ <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com" class="field" />
+ </div>
+
+ <div>
+ <label class="field-label" id="roles-label">Roles you are interested in</label>
+ <div id="role-chips" class="role-chips" role="group" aria-labelledby="roles-label"></div>
+ <input type="hidden" name="roles" id="roles-field" value="" />
+ </div>
+
+ <div id="field-employer">
+ <label for="hiring-needs" class="field-label">What are you hiring for?</label>
+ <textarea id="hiring-needs" name="hiring_needs" rows="3" placeholder="e.g. Community Manager + Discord mods for a launch" class="field resize-y min-h-[5rem]"></textarea>
+ </div>
+
+ <div id="field-worker" class="hidden">
+ <label for="skills" class="field-label">Your experience / portfolio notes</label>
+ <textarea id="skills" name="skills" rows="3" placeholder="e.g. Managed 12k Discord, ran raid squads, content on X" class="field resize-y min-h-[5rem]"></textarea>
+ </div>
+
+ <div class="recaptcha-wrap">
+ <p class="field-label">Verification</p>
+ <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-theme="light"></div>
+ <p class="recaptcha-note">Protected by reCAPTCHA. Replace the test site key in production (see SETUP.md).</p>
+ <p id="recaptcha-error" class="text-xs text-danger hidden">Please complete the reCAPTCHA check.</p>
+ </div>
+
+ <button type="submit" class="btn-primary w-full py-3.5 text-base" id="submit-btn">
+ Join the waitlist
+ </button>
+
+ <p id="form-message" class="text-sm text-center hidden" role="status" aria-live="polite"></p>
+ <p class="text-xs text-center form-hint">
+ Prefer a dedicated page? <a href="waitlist.html" class="inline-link">Open full waitlist</a>
+ </p>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+</main>
+
+ <footer class="py-10 sm:py-12">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+ <div class="flex items-center gap-2.5">
+ <img src="assets/logo.svg.png" alt="" width="24" height="24" class="logo-img" data-media="logo" />
+ <span class="font-display font-semibold footer-brand">Push Protocol</span>
+ </div>
+ <div class="flex flex-wrap items-center gap-4 text-sm">
+ <a href="https://x.com/push__io" target="_blank" rel="noopener noreferrer" class="footer-link">X @push__io</a>
+ <a href="about.html" class="footer-link">About</a>
+ <a href="investors.html" class="footer-link">Investors</a>
+ <a href="faq.html" class="footer-link">FAQ</a>
+ <a href="waitlist.html" class="footer-link">Waitlist</a>
+ <span class="solana-badge">Built on Solana</span>
+ </div>
+ </div>
+ <div class="mt-8 pt-6 footer-meta flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+ <p>&copy; <span id="year"></span> Push Protocol. All rights reserved.</p>
+ <p>In active development. Not a live product.</p>
+ </div>
+ </div>
+ </footer>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+ <div class="modal-backdrop" data-close-modal></div>
+ <div class="modal-panel">
+ <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
+ <p class="modal-kicker text-xs font-medium uppercase tracking-wider mb-2">Coming soon</p>
+ <h2 id="modal-title" class="font-display font-semibold text-xl">Not live yet</h2>
+ <p class="mt-3 text-sm leading-relaxed">
+ Apply and hire features ship with the MVP. Join the waitlist and we’ll notify you when early access opens.
+ </p>
+ <div class="mt-6 flex flex-col sm:flex-row gap-2">
+ <a href="waitlist.html" class="btn-primary text-center py-2.5 px-4" data-close-modal>Join waitlist</a>
+ <button type="button" class="btn-secondary py-2.5 px-4" data-close-modal>Close</button>
+ </div>
+ </div>
+ </div>
+ <script src="media-config.js"></script>
+ <script src="app.js"></script>
+</body>
+</html>

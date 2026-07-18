@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>The Solution | Push Protocol</title>
+ <meta name="description" content="Push Protocol: decentralized Web3 job marketplace. Escrow, portable reputation, 12.5% fee." />
+ <meta name="theme-color" content="#eef4fc" id="meta-theme-color" />
+ <link rel="icon" id="favicon-link" href="assets/favicon.svg.png" type="image/png" />
+ <script>
+ (function () {
+ try {
+ var t = localStorage.getItem("push_theme");
+ if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+ document.documentElement.setAttribute("data-theme", t);
+ } catch (e) {
+ document.documentElement.setAttribute("data-theme", "light");
+ }
+ })();
+ </script>
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+ <script src="https://cdn.tailwindcss.com"></script>
+ <script>
+ tailwind.config = {
+ theme: {
+ extend: {
+ fontFamily: {
+ display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+ sans: ['Inter', 'system-ui', 'sans-serif'],
+ },
+ },
+ },
+ };
+ </script>
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="animations.css" />
+</head>
+<body class="font-sans antialiased">
+ <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+
+ <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 scrolled">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <nav class="flex h-16 sm:h-[4.25rem] items-center justify-between gap-4">
+ <a href="index.html" class="flex items-center gap-2.5 group shrink-0" aria-label="Push Protocol home">
+ <img src="assets/logo.svg.png" alt="" width="28" height="28" class="logo-img" data-media="logo" />
+ <span class="font-display font-semibold text-[1.05rem] tracking-tight nav-brand">
+ Push<span class="font-medium"> Protocol</span>
+ </span>
+ </a>
+
+ <div class="hidden lg:flex items-center gap-1 text-[0.9rem]">
+ <a href="index.html" class="nav-link">Home</a>
+ <a href="about.html" class="nav-link">About</a>
+ <a href="solution.html" class="nav-link nav-link-active">Solution</a>
+ <a href="roles.html" class="nav-link">Roles</a>
+ <a href="investors.html" class="nav-link">Investors</a>
+ <a href="roadmap.html" class="nav-link">Roadmap</a>
+ <a href="waitlist.html" class="nav-link">Waitlist</a>
+ </div>
+
+ <div class="flex items-center gap-2 sm:gap-3">
+ <button type="button" id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle light / dark">
+ <svg id="icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+ <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+ </button>
+ <button type="button" id="nav-wallet-btn" class="btn-primary text-sm px-3.5 py-2 sm:px-4 sm:py-2.5 flex items-center gap-2 transition-all">
+ <span id="nav-wallet-avatar" class="w-4 h-4 rounded-full hidden" style="background: linear-gradient(135deg, #14F195, #9945FF);"></span>
+ <span id="nav-wallet-text">Connect Wallet</span>
+ </button>
+ <button type="button" id="menu-toggle" class="icon-btn lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+ <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+ <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+ </button>
+ </div>
+ </nav>
+ </div>
+
+ <div id="mobile-menu" class="lg:hidden hidden">
+ <div class="mx-auto max-w-6xl px-4 py-4 flex flex-col gap-1 text-[0.95rem]">
+ <a href="index.html" class="mobile-link">Home</a>
+ <a href="about.html" class="mobile-link">About</a>
+ <a href="problem.html" class="mobile-link">Problem</a>
+ <a href="solution.html" class="mobile-link">Solution</a>
+ <a href="roles.html" class="mobile-link">Roles</a>
+ <a href="how-it-works.html" class="mobile-link">How It Works</a>
+ <a href="preview.html" class="mobile-link">Preview</a>
+ <a href="compare.html" class="mobile-link">Why Push</a>
+ <a href="investors.html" class="mobile-link">Investors</a>
+ <a href="roadmap.html" class="mobile-link">Roadmap</a>
+ <a href="founder.html" class="mobile-link">Founder</a>
+ <a href="faq.html" class="mobile-link">FAQ</a>
+ <a href="waitlist.html" class="mobile-link">Waitlist</a>
+ <a href="waitlist.html" class="btn-primary text-center mt-2 py-3">Join Waitlist</a>
+ </div>
+ </div>
+ </header>
+
+<main id="main" class="page-main pt-24 sm:pt-28 pb-8">
+<!-- Solution -->
+ <section id="solution" class="section-pad">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <div class="section-head reveal">
+ <p class="section-label">The Solution</p>
+ <h2 class="section-title">How Push fixes this</h2>
+ <p class="section-sub">One marketplace for the whole Web3 stack. Escrowed pay. Reputation you actually own.</p>
+ </div>
+
+ <div class="mt-10 sm:mt-12 grid sm:grid-cols-2 gap-4 sm:gap-5">
+ <article class="card card-accent reveal">
+ <div class="card-icon accent-text" aria-hidden="true">01</div>
+ <h3 class="card-title">One marketplace</h3>
+ <p class="card-body">Every job (community, growth, design, legal, ops, engineering) is filterable by skill, role, pay, and deadline.</p>
+ </article>
+ <article class="card card-accent reveal reveal-delay-1">
+ <div class="card-icon accent-text" aria-hidden="true">02</div>
+ <h3 class="card-title">Escrow + disputes</h3>
+ <p class="card-body">Payment locked in a smart contract until work is approved. Clear ticket and investigation process if something goes wrong.</p>
+ </article>
+ <article class="card card-accent reveal reveal-delay-2">
+ <div class="card-icon accent-text" aria-hidden="true">03</div>
+ <h3 class="card-title">Portable reputation</h3>
+ <p class="card-body">Non-transferable completion badges and reviews that follow you across Web3, not locked to one platform.</p>
+ </article>
+ <article class="card card-accent reveal reveal-delay-3">
+ <div class="card-icon accent-text" aria-hidden="true">04</div>
+ <h3 class="card-title">12.5% flat fee</h3>
+ <p class="card-body">Less than half of Upwork (~20%) or a recruiter (20 to 30%). No gatekeeping, no hidden cuts.</p>
+ </article>
+ </div>
+ </div>
+ </section>
+</main>
+
+ <footer class="py-10 sm:py-12">
+ <div class="mx-auto max-w-6xl px-4 sm:px-6">
+ <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+ <div class="flex items-center gap-2.5">
+ <img src="assets/logo.svg.png" alt="" width="24" height="24" class="logo-img" data-media="logo" />
+ <span class="font-display font-semibold footer-brand">Push Protocol</span>
+ </div>
+ <div class="flex flex-wrap items-center gap-4 text-sm">
+ <a href="https://x.com/push__io" target="_blank" rel="noopener noreferrer" class="footer-link">X @push__io</a>
+ <a href="about.html" class="footer-link">About</a>
+ <a href="investors.html" class="footer-link">Investors</a>
+ <a href="faq.html" class="footer-link">FAQ</a>
+ <a href="waitlist.html" class="footer-link">Waitlist</a>
+ <span class="solana-badge">Built on Solana</span>
+ </div>
+ </div>
+ <div class="mt-8 pt-6 footer-meta flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs">
+ <p>&copy; <span id="year"></span> Push Protocol. All rights reserved.</p>
+ <p>In active development. Not a live product.</p>
+ </div>
+ </div>
+ </footer>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+ <div class="modal-backdrop" data-close-modal></div>
+ <div class="modal-panel">
+ <button type="button" class="modal-close" data-close-modal aria-label="Close">&times;</button>
+ <p class="modal-kicker text-xs font-medium uppercase tracking-wider mb-2">Coming soon</p>
+ <h2 id="modal-title" class="font-display font-semibold text-xl">Not live yet</h2>
+ <p class="mt-3 text-sm leading-relaxed">
+ Apply and hire features ship with the MVP. Join the waitlist and we’ll notify you when early access opens.
+ </p>
+ <div class="mt-6 flex flex-col sm:flex-row gap-2">
+ <a href="waitlist.html" class="btn-primary text-center py-2.5 px-4" data-close-modal>Join waitlist</a>
+ <button type="button" class="btn-secondary py-2.5 px-4" data-close-modal>Close</button>
+ </div>
+ </div>
+ </div>
+ <script src="media-config.js"></script>
+ <script src="app.js"></script>
+</body>
+</html>

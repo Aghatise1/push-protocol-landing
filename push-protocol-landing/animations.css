@@ -1,0 +1,265 @@
+/* ═══════════════════════════════════════════════════════════
+   Push Protocol — Custom animation toolkit
+   Add any of these class names to HTML elements.
+   Example: <div class="anim-float"> ... </div>
+   ═══════════════════════════════════════════════════════════ */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-pulse-glow,
+  .anim-bob,
+  .anim-spin-slow,
+  .anim-shimmer,
+  .anim-gradient-text,
+  .anim-draw-line,
+  .lifecycle-node.accent-node,
+  .btn-primary.anim-btn-glow {
+    animation: none !important;
+  }
+}
+
+/* ── Continuous motion ── */
+.anim-float {
+  animation: anim-float 4s ease-in-out infinite;
+}
+
+.anim-bob {
+  animation: anim-bob 2.4s ease-in-out infinite;
+}
+
+.anim-pulse-glow {
+  animation: anim-pulse-glow 2.5s ease-in-out infinite;
+}
+
+.anim-spin-slow {
+  animation: anim-spin 12s linear infinite;
+}
+
+.anim-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.anim-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: anim-shimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .anim-shimmer::after {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 60%
+  );
+}
+
+/* ── Gradient text (hero optional) ── */
+.anim-gradient-text {
+  background: linear-gradient(90deg, #2563eb, #0ea5e9, #6366f1, #2563eb);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: anim-gradient 6s ease infinite;
+}
+
+[data-theme="dark"] .anim-gradient-text {
+  background: linear-gradient(90deg, #60a5fa, #38bdf8, #818cf8, #60a5fa);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ── Scroll-in variants (use with .reveal) ── */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Button glow on primary CTAs ── */
+.btn-primary.anim-btn-glow {
+  animation: anim-btn-glow 2.8s ease-in-out infinite;
+}
+
+/* ── Lifecycle accent nodes pulse ── */
+.lifecycle-node.accent-node.anim-pulse-soft {
+  animation: anim-node-pulse 2.2s ease-in-out infinite;
+}
+
+/* ── Image slots ── */
+.media-slot {
+  display: none; /* hidden until image loads successfully */
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  box-shadow: var(--shadow);
+}
+
+.media-slot.is-loaded {
+  display: block;
+}
+
+.media-slot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.media-slot--hero {
+  margin: 2rem auto 0;
+  max-width: 56rem;
+}
+
+.media-slot--hero img {
+  max-height: 380px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.media-slot--banner {
+  margin: 0 auto 1.5rem;
+  max-width: 100%;
+}
+
+.media-slot--banner img {
+  max-height: 220px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.media-slot--side {
+  border-radius: 0.875rem;
+}
+
+.media-slot--side img {
+  min-height: 180px;
+  max-height: 260px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.media-slot--founder {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.media-slot--founder.is-loaded {
+  display: block;
+  flex-shrink: 0;
+}
+
+.media-slot--founder img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* Hide letter avatar when real founder photo loaded */
+.media-slot--founder.is-loaded + .avatar-fallback {
+  display: none !important;
+}
+
+/* Drop-zone hint (only when empty, optional) */
+.media-hint {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+/* ── Keyframes ── */
+@keyframes anim-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes anim-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes anim-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35); }
+  50% { box-shadow: 0 0 24px 4px rgba(37, 99, 235, 0.25); }
+}
+
+@keyframes anim-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes anim-shimmer {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
+
+@keyframes anim-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes anim-btn-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35); }
+  50% { box-shadow: 0 0 22px 2px rgba(37, 99, 235, 0.4); }
+}
+
+@keyframes anim-node-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.25); }
+  50% { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0); }
+}
+
+/* Stagger helpers for children */
+.stagger-children > .reveal:nth-child(1) { transition-delay: 0.05s; }
+.stagger-children > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children > .reveal:nth-child(3) { transition-delay: 0.15s; }
+.stagger-children > .reveal:nth-child(4) { transition-delay: 0.2s; }
+.stagger-children > .reveal:nth-child(5) { transition-delay: 0.25s; }
+.stagger-children > .reveal:nth-child(6) { transition-delay: 0.3s; }
